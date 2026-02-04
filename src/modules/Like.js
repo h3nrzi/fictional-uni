@@ -13,15 +13,16 @@ class Like {
         const currentLikeBox = $(e.target).closest(".like-box");
 
         if (currentLikeBox.data("exists") === 'yes')
-            this.deleteLike();
+            this.deleteLike(currentLikeBox);
         else
-            this.createLike();
+            this.createLike(currentLikeBox);
     }
 
-    createLike() {
+    createLike(currentLikeBox) {
         $.ajax({
             url: `${university_data.root_url}/wp-json/api/v1/manage-like`,
             type: "POST",
+            data: {professor_id: currentLikeBox.data("professorid")},
             success: (res) => {
                 console.log(res)
             },
@@ -31,7 +32,7 @@ class Like {
         })
     }
 
-    deleteLike() {
+    deleteLike(currentLikeBox) {
         $.ajax({
             url: `${university_data.root_url}/wp-json/api/v1/manage-like`,
             type: "DELETE",

@@ -176,11 +176,20 @@ function search_controller( WP_REST_Request $request ): array {
 	return $results;
 }
 
-function create_like_controller() {
-	return "Thanks for trying to create a like";
+function create_like_controller( $data ): void {
+	$professor_id = sanitize_text_field( $data["professor_id"] );
+
+	wp_insert_post( [
+		"post_type"   => "like",
+		"post_status" => "publish",
+		"post_title"  => "2nd PHP Test",
+		"meta_input"  => [
+			"liked_professor_id" => $professor_id,
+		],
+	] );
 }
 
-function delete_like_controller() {
+function delete_like_controller(): string {
 	return "Thanks for trying to delete a like";
 }
 

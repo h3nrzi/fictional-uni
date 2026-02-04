@@ -37,11 +37,15 @@
 						],
 					] );
 
+					print_r( $exists_query->have_posts() );
+
 					$exists_query->have_posts()
 						? $exists_status = "yes"
 						: $exists_status = "no";
 					?>
-                    <span class="like-box" data-exists="<?php echo $exists_status ?>">
+                    <span class="like-box"
+                          data-exists="<?php echo $exists_status ?>"
+                          data-professorid="<?php the_ID(); ?>">
                         <i class="fa fa-heart-o" aria-hidden="true"></i>
                         <i class="fa fa-heart" aria-hidden="true"></i>
                         <span class="like-count"><?php echo $liked_count->found_posts; ?></span>
