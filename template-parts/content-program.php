@@ -8,7 +8,7 @@
 		<?php the_excerpt(); ?>
         <p>
             <a class="btn btn--blue" href="<?php the_permalink(); ?>">
-                View Program &raquo;
+				<?php echo esc_html__( 'مشاهده برنامه', 'fictional-uni' ); ?> &raquo;
             </a>
         </p>
     </div>

@@ -3,8 +3,8 @@
 
 <!-- Page banner section -->
 <?php page_banner( [
-	"title"    => "Our campuses",
-	"subtitle" => "We have several conveniently located campuses.",
+	"title"    => esc_html__( 'پردیس‌های ما', 'fictional-uni' ),
+	"subtitle" => esc_html__( 'چندین پردیس در مکان‌های مناسب داریم.', 'fictional-uni' ),
 ] ); ?>
 
 <div class="container container--narrow page-section">

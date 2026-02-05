@@ -11,7 +11,7 @@
             <p>
                 <a class="metabox__blog-home-link" href="<?php echo get_post_type_archive_link( "program" ); ?>">
                     <i class="fa fa-home" aria-hidden="true"></i>
-                    All program
+					<?php echo esc_html__( 'همه برنامه‌ها', 'fictional-uni' ); ?>
                 </a>
                 <span class="metabox__main">
 					<?php the_title(); ?>
@@ -40,7 +40,14 @@
 		] );
 		if ( $related_professors->have_posts() ) : ?>
             <hr class="section-break">
-            <h2 class="headline headline--medium"><?php echo get_the_title(); ?> Professors</h2>
+            <h2 class="headline headline--medium">
+				<?php
+				printf(
+					esc_html__( 'اساتید %s', 'fictional-uni' ),
+					esc_html( get_the_title() )
+				);
+				?>
+			</h2>
             <ul class="professor-cards">
 				<?php while ( $related_professors->have_posts() ) : $related_professors->the_post(); ?>
 					<?php get_template_part( "template-parts/content", "professor" ); ?>
@@ -75,7 +82,12 @@
 		if ( $related_events->have_posts() ) : ?>
             <hr class="section-break">
             <h2 class="headline headline--medium">
-                Upcoming <?php echo get_the_title(); ?> Events
+				<?php
+				printf(
+					esc_html__( 'رویدادهای پیش‌روی %s', 'fictional-uni' ),
+					esc_html( get_the_title() )
+				);
+				?>
             </h2>
 			<?php while ( $related_events->have_posts() ) : $related_events->the_post(); ?>
 				<?php get_template_part( "template-parts/content", "event" ); ?>
@@ -88,7 +100,12 @@
 		if ( $related_campuses ) : ?>
             <hr class="section-break">
             <h2 class="headline headline--medium">
-				<?php the_title(); ?> is Available At These Campuses:
+				<?php
+				printf(
+					esc_html__( '%s در این پردیس‌ها ارائه می‌شود:', 'fictional-uni' ),
+					esc_html( get_the_title() )
+				);
+				?>
             </h2>
             <ul class="link-list min-list">
 				<?php foreach ( $related_campuses as $campus ) : ?>

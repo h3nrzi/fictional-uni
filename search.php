@@ -3,8 +3,8 @@
 
 <!-- Page banner section -->
 <?php page_banner( [
-	"title"    => "Search Results",
-	"subtitle" => "You searched for &ldquo;" . esc_html( get_search_query( false ) ) . " &rdquo;",
+	"title"    => esc_html__( 'نتایج جستجو', 'fictional-uni' ),
+	"subtitle" => sprintf( esc_html__( 'شما جستجو کردید برای «%s»', 'fictional-uni' ), esc_html( get_search_query( false ) ) ),
 ] ); ?>
 
 <div class="container container--narrow page-section">
@@ -17,7 +17,7 @@
 		<!-- Pagination -->
 		<?php echo paginate_links(); ?>
 	<?php else : ?>
-		<h2 class="headline headline--small-plus">No result match that search.</h2>
+		<h2 class="headline headline--small-plus"><?php echo esc_html__( 'هیچ نتیجه‌ای برای این جستجو پیدا نشد.', 'fictional-uni' ); ?></h2>
 		<?php get_search_form(); ?>
 	<?php endif; ?>
 </div>

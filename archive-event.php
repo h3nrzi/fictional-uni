@@ -3,8 +3,8 @@
 
 <!-- Page banner section -->
 <?php page_banner( [
-	"title"    => "All Events",
-	"subtitle" => "See what is going on in our world.",
+	"title"    => esc_html__( 'همه رویدادها', 'fictional-uni' ),
+	"subtitle" => esc_html__( 'ببینید در دنیای ما چه خبر است.', 'fictional-uni' ),
 ] ); ?>
 
 <div class="container container--narrow page-section">
@@ -20,9 +20,9 @@
 
     <!-- Past events link -->
     <p>
-        Looking for a recap of past events?
+		<?php echo esc_html__( 'به دنبال مرور رویدادهای گذشته هستید؟', 'fictional-uni' ); ?>
         <a href="<?php echo site_url( "/past-events" ); ?>">
-            Check out our past events archive.
+			<?php echo esc_html__( 'آرشیو رویدادهای گذشته را ببینید.', 'fictional-uni' ); ?>
         </a>
     </p>
 </div>

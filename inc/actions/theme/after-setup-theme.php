@@ -1,6 +1,8 @@
 <?php
 
 function university_features(): void {
+	load_theme_textdomain( 'fictional-uni', get_template_directory() . '/languages' );
+
 	// Menu locations
 	// register_nav_menu( "header_menu_location", "Header Menu Location" );
 	// register_nav_menu( "footer_location_one", "Footer Location One" );

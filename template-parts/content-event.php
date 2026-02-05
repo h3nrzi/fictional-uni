@@ -22,7 +22,7 @@
 				echo wp_trim_words( get_the_content(), 18 );
 			} ?>
             <a href="<?php the_permalink(); ?>" class="nu gray">
-                Learn more
+				<?php echo esc_html__( 'بیشتر بدانید', 'fictional-uni' ); ?>
             </a>
         </p>
     </div>
