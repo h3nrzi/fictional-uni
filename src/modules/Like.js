@@ -27,6 +27,10 @@ class Like {
             type: "POST",
             data: {professor_id: currentLikeBox.data("professorid")},
             success: (res) => {
+                currentLikeBox.attr("data-exists", "yes");
+                let likeCount = parseInt(currentLikeBox.find(".like-count").html(), 10);
+                likeCount++;
+                currentLikeBox.find(".like-count").html(likeCount);
                 console.log(res)
             },
             error: (err) => {
