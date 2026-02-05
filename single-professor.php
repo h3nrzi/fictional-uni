@@ -25,23 +25,23 @@
 						],
 					] );
 
-					$exists_query = new WP_Query( [
-						"author"     => get_current_user_id(),
-						"post_type"  => "like",
-						"meta_query" => [
-							[
-								"key"     => "liked_professor_id",
-								"compare" => "=",
-								"value"   => get_the_ID(),
+					$exists_status = "no";
+					if ( is_user_logged_in() ) {
+						$exists_query = new WP_Query( [
+							"author"     => get_current_user_id(),
+							"post_type"  => "like",
+							"meta_query" => [
+								[
+									"key"     => "liked_professor_id",
+									"compare" => "=",
+									"value"   => get_the_ID(),
+								],
 							],
-						],
-					] );
-
-					print_r( $exists_query->have_posts() );
-
-					$exists_query->have_posts()
-						? $exists_status = "yes"
-						: $exists_status = "no";
+						] );
+						$exists_query->have_posts()
+							? $exists_status = "yes"
+							: $exists_status = "no";
+					}
 					?>
                     <span class="like-box"
                           data-exists="<?php echo $exists_status ?>"

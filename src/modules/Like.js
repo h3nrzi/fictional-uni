@@ -20,6 +20,9 @@ class Like {
 
     createLike(currentLikeBox) {
         $.ajax({
+            beforeSend: (xhr) => {
+                xhr.setRequestHeader("X-WP-Nonce", university_data.nonce)
+            },
             url: `${university_data.root_url}/wp-json/api/v1/manage-like`,
             type: "POST",
             data: {professor_id: currentLikeBox.data("professorid")},
@@ -27,7 +30,8 @@ class Like {
                 console.log(res)
             },
             error: (err) => {
-                console.log(err)
+                alert(err.responseText);
+                console.error(err)
             }
         })
     }
@@ -40,6 +44,7 @@ class Like {
                 console.log(res)
             },
             error: (err) => {
+                alert(err.responseText);
                 console.log(err)
             }
         })
