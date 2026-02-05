@@ -8,6 +8,32 @@ function university_files(): void {
 	wp_localize_script( "main-university-js", "university_data", [
 		"root_url" => get_site_url(),
 		"nonce"    => wp_create_nonce( "wp_rest" ),
+		"i18n"     => [
+			"searchPlaceholder" => "به دنبال چه چیزی هستید؟",
+			"searchError"       => "خطای غیرمنتظره‌ای رخ داد؛ لطفاً دوباره تلاش کنید.",
+			"sectionPrograms"   => "رشته‌ها",
+			"sectionEvents"     => "رویدادها",
+			"sectionGeneral"    => "اطلاعات عمومی",
+			"sectionProfessors" => "اساتید",
+			"sectionCampuses"   => "پردیس‌ها",
+			"noPrograms"        => "هیچ رشته‌ای با این جستجو مطابقت ندارد.",
+			"noEvents"          => "هیچ رویدادی با این جستجو مطابقت ندارد.",
+			"noGeneral"         => "هیچ اطلاعات عمومی مطابق این جستجو پیدا نشد.",
+			"noProfessors"      => "هیچ استادی با این جستجو مطابقت ندارد.",
+			"noCampuses"        => "هیچ پردیسی با این جستجو مطابقت ندارد.",
+			"viewAllPrograms"   => "مشاهده همه رشته‌ها",
+			"viewAllEvents"     => "مشاهده همه رویدادها",
+			"viewAllCampuses"   => "مشاهده همه پردیس‌ها",
+			"learnMore"         => "بیشتر بخوانید",
+			"authorBy"          => "توسط",
+			"notesEdit"         => "ویرایش",
+			"notesDelete"       => "حذف",
+			"notesCancel"       => "لغو",
+			"notesSave"         => "ذخیره",
+			"notesDeleteError"  => "امکان حذف یادداشت وجود ندارد. لطفاً دوباره تلاش کنید.",
+			"notesSaveError"    => "امکان ذخیره یادداشت وجود ندارد. لطفاً دوباره تلاش کنید.",
+			"notesCreateError"  => "امکان ایجاد یادداشت وجود ندارد. لطفاً دوباره تلاش کنید.",
+		],
 	] );
 
 	// Google Map script
