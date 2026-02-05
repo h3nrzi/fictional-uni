@@ -20,6 +20,7 @@ class Search {
     constructor({debounceDelay = 750} = {}) {
         this.$body = $("body");
         this.$document = $(document);
+        this.i18n = university_data?.i18n ?? {};
 
         this.isOverlayOpen = false;
         this.isSpinnerVisible = false;
@@ -41,7 +42,7 @@ class Search {
         <div class="search-overlay__top">
           <div class="container">
             <i class="fa fa-search search-overlay__icon" aria-hidden="true"></i>
-            <input type="text" id="search-term" class="search-term" placeholder="What are you looking for?">
+            <input type="text" id="search-term" class="search-term" placeholder="${this.i18n.searchPlaceholder ?? "What are you looking for?"}">
             <i class="fa fa-window-close search-overlay__close" aria-hidden="true"></i>
           </div>
         </div>
@@ -146,7 +147,7 @@ class Search {
                 this.setResultsHtml(this.renderResults(results, baseUrl));
             })
             .fail(() => {
-                this.setResultsHtml("<p>Unexpected error; please try again.</p>");
+                this.setResultsHtml(`<p>${this.i18n.searchError ?? "Unexpected error; please try again."}</p>`);
             })
             .always(() => {
                 this.isSpinnerVisible = false;
@@ -183,26 +184,28 @@ class Search {
     }
 
     renderGeneralInfo(items = []) {
-        const title = this.renderSectionTitle("General Information");
+        const title = this.renderSectionTitle(this.i18n.sectionGeneral ?? "General Information");
 
-        if (!items.length) return `${title}<p>No general information matches that search.</p>`;
+        if (!items.length) {
+            return `${title}<p>${this.i18n.noGeneral ?? "No general information matches that search."}</p>`;
+        }
 
         return `
       ${title}
       ${this.renderList(items, "link-list min-list", (item) => `
         <li>
           <a href="${item.permalink}">${item.title}</a>
-          ${item.post_type === "post" ? ` by ${item.author_name}` : ""}
+          ${item.post_type === "post" ? ` ${this.i18n.authorBy ?? "by"} ${item.author_name}` : ""}
         </li>
       `)}
     `;
     }
 
     renderPrograms(items = [], baseUrl) {
-        const title = this.renderSectionTitle("Programs");
+        const title = this.renderSectionTitle(this.i18n.sectionPrograms ?? "Programs");
 
         if (!items.length) {
-            return `${title}<p>No program matches that search. <a href="${baseUrl}/programs">View all programs</a></p>`;
+            return `${title}<p>${this.i18n.noPrograms ?? "No program matches that search."} <a href="${baseUrl}/programs">${this.i18n.viewAllPrograms ?? "View all programs"}</a></p>`;
         }
 
         return `
@@ -214,9 +217,11 @@ class Search {
     }
 
     renderProfessors(items = []) {
-        const title = this.renderSectionTitle("Professors");
+        const title = this.renderSectionTitle(this.i18n.sectionProfessors ?? "Professors");
 
-        if (!items.length) return `${title}<p>No professor matches that search.</p>`;
+        if (!items.length) {
+            return `${title}<p>${this.i18n.noProfessors ?? "No professor matches that search."}</p>`;
+        }
 
         return `
       ${title}
@@ -232,10 +237,10 @@ class Search {
     }
 
     renderCampuses(items = [], baseUrl) {
-        const title = this.renderSectionTitle("Campuses");
+        const title = this.renderSectionTitle(this.i18n.sectionCampuses ?? "Campuses");
 
         if (!items.length) {
-            return `${title}<p>No campus matches that search. <a href="${baseUrl}/campuses">View all campuses</a></p>`;
+            return `${title}<p>${this.i18n.noCampuses ?? "No campus matches that search."} <a href="${baseUrl}/campuses">${this.i18n.viewAllCampuses ?? "View all campuses"}</a></p>`;
         }
 
         return `
@@ -247,10 +252,10 @@ class Search {
     }
 
     renderEvents(items = [], baseUrl) {
-        const title = this.renderSectionTitle("Events");
+        const title = this.renderSectionTitle(this.i18n.sectionEvents ?? "Events");
 
         if (!items.length) {
-            return `${title}<p>No event matches that search. <a href="${baseUrl}/events">View all events</a></p>`;
+            return `${title}<p>${this.i18n.noEvents ?? "No event matches that search."} <a href="${baseUrl}/events">${this.i18n.viewAllEvents ?? "View all events"}</a></p>`;
         }
 
         // Note: original code used <ul> but inserted <div>s. Keeping the divs for correctness.
@@ -270,7 +275,7 @@ class Search {
               </h5>
               <p>
                 ${item.description}
-                <a href="${item.permalink}" class="nu gray">Learn more</a>
+                <a href="${item.permalink}" class="nu gray">${this.i18n.learnMore ?? "Learn more"}</a>
               </p>
             </div>
           </div>
