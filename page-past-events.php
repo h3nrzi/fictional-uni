@@ -3,8 +3,8 @@
 
 <!-- Page banner section -->
 <?php page_banner( [
-	"title"    => "Past Events",
-	"subtitle" => "A recap of our past events",
+	"title"    => esc_html__( 'رویدادهای گذشته', 'fictional-uni' ),
+	"subtitle" => esc_html__( 'مروری بر رویدادهای گذشته ما', 'fictional-uni' ),
 ] ); ?>
 
 <div class="container container--narrow page-section">

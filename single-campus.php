@@ -11,7 +11,7 @@
             <p>
                 <a class="metabox__blog-home-link" href="<?php echo get_post_type_archive_link( "campus" ); ?>">
                     <i class="fa fa-home" aria-hidden="true"></i>
-                    All Campuses
+					<?php echo esc_html__( 'همه پردیس‌ها', 'fictional-uni' ); ?>
                 </a>
                 <span class="metabox__main">
 					<?php the_title(); ?>
@@ -52,7 +52,7 @@
 		] );
 		if ( $related_programs->have_posts() ) : ?>
             <hr class="section-break">
-            <h2 class="headline headline--medium">Programs Available At This Campus</h2>
+            <h2 class="headline headline--medium"><?php echo esc_html__( 'برنامه‌های موجود در این پردیس', 'fictional-uni' ); ?></h2>
             <ul class="min-list link-list">
 				<?php while ( $related_programs->have_posts() ) : $related_programs->the_post(); ?>
                     <li>

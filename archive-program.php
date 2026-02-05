@@ -3,8 +3,8 @@
 
 <!-- Page banner section -->
 <?php page_banner( [
-	"title"    => "All Programs",
-	"subtitle" => "There is something for everyone. Have a look around.",
+	"title"    => esc_html__( 'همه برنامه‌ها', 'fictional-uni' ),
+	"subtitle" => esc_html__( 'برای همه چیزی هست. نگاهی بیندازید.', 'fictional-uni' ),
 ] ); ?>
 
 <div class="container container--narrow page-section">
