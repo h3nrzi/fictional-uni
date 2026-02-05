@@ -39,6 +39,10 @@ function create_like_controller( $data ) {
 }
 
 function delete_like_controller( WP_REST_Request $request ): string {
+	if ( ! is_user_logged_in() ) {
+		die( "Only logged in users can create a like." );
+	}
+	
 	$like_id = sanitize_text_field( (string) $request->get_param( 'id' ) );
 
 	if (
