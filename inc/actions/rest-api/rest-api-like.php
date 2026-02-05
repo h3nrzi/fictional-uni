@@ -38,8 +38,19 @@ function create_like_controller( $data ) {
 	] );
 }
 
-function delete_like_controller(): string {
-	return "Thanks for trying to delete a like";
+function delete_like_controller( WP_REST_Request $request ): string {
+	$like_id = sanitize_text_field( (string) $request->get_param( 'id' ) );
+
+	if (
+		get_current_user_id() !== get_post_field( "post_author", $like_id )
+		and get_post_type( $like_id ) !== 'like'
+	) {
+		die( "You cannot perform this action." );
+	}
+
+	wp_delete_post( $like_id, true );
+
+	return "Congrats, like deleted.";
 }
 
 function like_routes(): void {
@@ -55,7 +66,7 @@ function like_routes(): void {
 
 	register_rest_route(
 		'api/v1',
-		'manage-like',
+		'manage-like/(?P<id>\d+)',
 		[
 			'methods'             => WP_REST_Server::DELETABLE,
 			'callback'            => 'delete_like_controller',

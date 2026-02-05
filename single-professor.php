@@ -14,7 +14,7 @@
                 </div>
                 <div class="two-thirds">
 					<?php
-					$liked_count = new WP_Query( [
+					$liked_count   = new WP_Query( [
 						"post_type"  => "like",
 						"meta_query" => [
 							[
@@ -24,7 +24,6 @@
 							],
 						],
 					] );
-
 					$exists_status = "no";
 					if ( is_user_logged_in() ) {
 						$exists_query = new WP_Query( [
@@ -44,6 +43,9 @@
 					}
 					?>
                     <span class="like-box"
+                          data-like="<?php if ( isset( $exists_query->posts[0]->ID ) ) {
+						      echo $exists_query->posts[0]->ID;
+					      } ?>"
                           data-exists="<?php echo $exists_status ?>"
                           data-professorid="<?php the_ID(); ?>">
                         <i class="fa fa-heart-o" aria-hidden="true"></i>
