@@ -6,6 +6,22 @@
 	right: 0;
 	padding: 20px 0;
 
+	.container {
+		@include atMedium {
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			gap: 20px;
+		}
+	}
+
+	.school-logo-text {
+		@include atMedium {
+			float: none;
+			margin: 0;
+		}
+	}
+
 	&__avatar {
 		position: absolute;
 		top: 0;
@@ -46,7 +62,11 @@
 			transform: translateY(0) scale(1);
 			position: static;
 			background-color: transparent;
-			float: right;
+			float: none;
+			display: flex;
+			align-items: center;
+			justify-content: space-between;
+			flex: 1;
 			padding-top: 0;
 			padding-bottom: 0;
 			top: 0;
@@ -95,7 +115,10 @@
 
 		@include atMedium {
 			padding: 0;
-			float: right;
+			float: none;
+			display: flex;
+			align-items: center;
+			gap: 12px;
 		}
 	}
 
