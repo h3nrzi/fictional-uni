@@ -3,8 +3,8 @@
 
 <!-- Page banner section -->
 <?php page_banner( [
-	"title"    => "Welcome to our blog!",
-	"subtitle" => "Keep up with our latest news",
+	"title"    => 'به وبلاگ ما خوش آمدید!',
+	"subtitle" => 'آخرین خبرها و نوشته‌ها را دنبال کنید.',
 ] ); ?>
 
 <div class="container container--narrow page-section">
@@ -21,9 +21,14 @@
 			<!-- Post metadata -->
 			<div class="metabox">
 				<p>
-					Posted by <?php the_author_posts_link(); ?>
-					on <?php the_time( "n/j/y" ); ?>
-					in <?php echo get_the_category_list( ", " ); ?>
+					<?php
+					printf(
+						wp_kses_post( __( 'نوشته شده توسط %1$s در %2$s در %3$s', 'fictional-uni' ) ),
+						get_the_author_posts_link(),
+						esc_html( get_the_time( 'Y/m/d' ) ),
+						get_the_category_list( ', ' )
+					);
+					?>
 				</p>
 			</div>
 
@@ -32,7 +37,7 @@
 				<?php the_excerpt(); ?>
 				<p>
 					<a class="btn btn--blue" href="<?php the_permalink(); ?>">
-						Continue reading &raquo;
+						<?php echo esc_html__( 'ادامه مطلب', 'fictional-uni' ); ?> &raquo;
 					</a>
 				</p>
 			</div>

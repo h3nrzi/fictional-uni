@@ -61,7 +61,7 @@ class MyNotes {
                 $note.slideUp();
             })
             .fail(() => {
-                console.error(this.i18n.notesDeleteError ?? "Unable to delete the note. Please try again.");
+                console.error(this.i18n.notesDeleteError ?? "امکان حذف یادداشت وجود ندارد. لطفاً دوباره تلاش کنید.");
             });
     }
 
@@ -94,7 +94,7 @@ class MyNotes {
                 this.setNoteReadOnly($note);
             })
             .fail(() => {
-                console.error(this.i18n.notesSaveError ?? "Unable to save the note. Please try again.");
+                console.error(this.i18n.notesSaveError ?? "امکان ذخیره یادداشت وجود ندارد. لطفاً دوباره تلاش کنید.");
             });
     }
 
@@ -119,7 +119,7 @@ class MyNotes {
             .fail((err) => {
                 console.log(err);
                 alert(err.responseText);
-                console.error(this.i18n.notesCreateError ?? "Unable to create the note. Please try again.");
+                console.error(this.i18n.notesCreateError ?? "امکان ایجاد یادداشت وجود ندارد. لطفاً دوباره تلاش کنید.");
             });
     }
 
@@ -129,7 +129,7 @@ class MyNotes {
 
         $note
             .find(S.editButton)
-            .html(`<i class='fa fa-times' aria-hidden='true'></i> ${this.i18n.notesCancel ?? "Cancel"}`);
+            .html(`<i class='fa fa-times' aria-hidden='true'></i> ${this.i18n.notesCancel ?? "لغو"}`);
 
         $note
             .find(`${S.titleField}, ${S.bodyField}`)
@@ -147,7 +147,7 @@ class MyNotes {
 
         $note
             .find(S.editButton)
-            .html(`<i class='fa fa-pencil' aria-hidden='true'></i> ${this.i18n.notesEdit ?? "Edit"}`);
+            .html(`<i class='fa fa-pencil' aria-hidden='true'></i> ${this.i18n.notesEdit ?? "ویرایش"}`);
 
         $note
             .find(`${S.titleField}, ${S.bodyField}`)
@@ -165,14 +165,14 @@ class MyNotes {
       <li data-id="${id}">
         <input class="note-title-field" value="${title.raw ?? ""}" type="text" readonly>
         <span class="edit-note">
-          <i class="fa fa-pencil" aria-hidden="true"></i> ${this.i18n.notesEdit ?? "Edit"}
+          <i class="fa fa-pencil" aria-hidden="true"></i> ${this.i18n.notesEdit ?? "ویرایش"}
         </span>
         <span class="delete-note">
-          <i class="fa fa-trash-o" aria-hidden="true"></i> ${this.i18n.notesDelete ?? "Delete"}
+          <i class="fa fa-trash-o" aria-hidden="true"></i> ${this.i18n.notesDelete ?? "حذف"}
         </span>
         <textarea class="note-body-field" readonly>${content.raw ?? ""}</textarea>
         <span class="update-note btn btn--blue btn--small">
-          <i class="fa fa-arrow-right" aria-hidden="true"></i> ${this.i18n.notesSave ?? "Save"}
+          <i class="fa fa-arrow-right" aria-hidden="true"></i> ${this.i18n.notesSave ?? "ذخیره"}
         </span>
       </li>
     `;

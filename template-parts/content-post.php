@@ -10,7 +10,7 @@
 			printf(
 				wp_kses_post( __( 'نوشته شده توسط %1$s در %2$s در %3$s', 'fictional-uni' ) ),
 				get_the_author_posts_link(),
-				esc_html( get_the_time( "n/j/y" ) ),
+				esc_html( get_the_time( "Y/m/d" ) ),
 				get_the_category_list( ", " )
 			);
 			?>

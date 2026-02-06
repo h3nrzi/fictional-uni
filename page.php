@@ -12,7 +12,7 @@
                 <p>
                     <a class="metabox__blog-home-link" href="<?php echo get_permalink( $the_parent_id ); ?>">
                         <i class="fa fa-home" aria-hidden="true"></i>
-                        Back to <?php echo get_the_title( $the_parent_id ); ?>
+                        <?php echo esc_html__( 'بازگشت به', 'fictional-uni' ); ?> <?php echo get_the_title( $the_parent_id ); ?>
                     </a>
                     <span class="metabox__main">
 						<?php the_title(); ?>

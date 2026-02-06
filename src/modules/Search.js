@@ -42,7 +42,7 @@ class Search {
         <div class="search-overlay__top">
           <div class="container">
             <i class="fa fa-search search-overlay__icon" aria-hidden="true"></i>
-            <input type="text" id="search-term" class="search-term" placeholder="${this.i18n.searchPlaceholder ?? "What are you looking for?"}">
+            <input type="text" id="search-term" class="search-term" placeholder="${this.i18n.searchPlaceholder ?? "به دنبال چه چیزی هستید؟"}">
             <i class="fa fa-window-close search-overlay__close" aria-hidden="true"></i>
           </div>
         </div>
@@ -147,7 +147,7 @@ class Search {
                 this.setResultsHtml(this.renderResults(results, baseUrl));
             })
             .fail(() => {
-                this.setResultsHtml(`<p>${this.i18n.searchError ?? "Unexpected error; please try again."}</p>`);
+                this.setResultsHtml(`<p>${this.i18n.searchError ?? "خطای غیرمنتظره‌ای رخ داد؛ لطفاً دوباره تلاش کنید."}</p>`);
             })
             .always(() => {
                 this.isSpinnerVisible = false;
@@ -184,10 +184,10 @@ class Search {
     }
 
     renderGeneralInfo(items = []) {
-        const title = this.renderSectionTitle(this.i18n.sectionGeneral ?? "General Information");
+        const title = this.renderSectionTitle(this.i18n.sectionGeneral ?? "اطلاعات عمومی");
 
         if (!items.length) {
-            return `${title}<p>${this.i18n.noGeneral ?? "No general information matches that search."}</p>`;
+            return `${title}<p>${this.i18n.noGeneral ?? "هیچ اطلاعات عمومی مطابق این جستجو پیدا نشد."}</p>`;
         }
 
         return `
@@ -195,17 +195,17 @@ class Search {
       ${this.renderList(items, "link-list min-list", (item) => `
         <li>
           <a href="${item.permalink}">${item.title}</a>
-          ${item.post_type === "post" ? ` ${this.i18n.authorBy ?? "by"} ${item.author_name}` : ""}
+          ${item.post_type === "post" ? ` ${this.i18n.authorBy ?? "توسط"} ${item.author_name}` : ""}
         </li>
       `)}
     `;
     }
 
     renderPrograms(items = [], baseUrl) {
-        const title = this.renderSectionTitle(this.i18n.sectionPrograms ?? "Programs");
+        const title = this.renderSectionTitle(this.i18n.sectionPrograms ?? "رشته‌ها");
 
         if (!items.length) {
-            return `${title}<p>${this.i18n.noPrograms ?? "No program matches that search."} <a href="${baseUrl}/programs">${this.i18n.viewAllPrograms ?? "View all programs"}</a></p>`;
+            return `${title}<p>${this.i18n.noPrograms ?? "هیچ رشته‌ای با این جستجو مطابقت ندارد."} <a href="${baseUrl}/programs">${this.i18n.viewAllPrograms ?? "مشاهده همه رشته‌ها"}</a></p>`;
         }
 
         return `
@@ -217,10 +217,10 @@ class Search {
     }
 
     renderProfessors(items = []) {
-        const title = this.renderSectionTitle(this.i18n.sectionProfessors ?? "Professors");
+        const title = this.renderSectionTitle(this.i18n.sectionProfessors ?? "اساتید");
 
         if (!items.length) {
-            return `${title}<p>${this.i18n.noProfessors ?? "No professor matches that search."}</p>`;
+            return `${title}<p>${this.i18n.noProfessors ?? "هیچ استادی با این جستجو مطابقت ندارد."}</p>`;
         }
 
         return `
@@ -237,10 +237,10 @@ class Search {
     }
 
     renderCampuses(items = [], baseUrl) {
-        const title = this.renderSectionTitle(this.i18n.sectionCampuses ?? "Campuses");
+        const title = this.renderSectionTitle(this.i18n.sectionCampuses ?? "پردیس‌ها");
 
         if (!items.length) {
-            return `${title}<p>${this.i18n.noCampuses ?? "No campus matches that search."} <a href="${baseUrl}/campuses">${this.i18n.viewAllCampuses ?? "View all campuses"}</a></p>`;
+            return `${title}<p>${this.i18n.noCampuses ?? "هیچ پردیسی با این جستجو مطابقت ندارد."} <a href="${baseUrl}/campuses">${this.i18n.viewAllCampuses ?? "مشاهده همه پردیس‌ها"}</a></p>`;
         }
 
         return `
@@ -252,10 +252,10 @@ class Search {
     }
 
     renderEvents(items = [], baseUrl) {
-        const title = this.renderSectionTitle(this.i18n.sectionEvents ?? "Events");
+        const title = this.renderSectionTitle(this.i18n.sectionEvents ?? "رویدادها");
 
         if (!items.length) {
-            return `${title}<p>${this.i18n.noEvents ?? "No event matches that search."} <a href="${baseUrl}/events">${this.i18n.viewAllEvents ?? "View all events"}</a></p>`;
+            return `${title}<p>${this.i18n.noEvents ?? "هیچ رویدادی با این جستجو مطابقت ندارد."} <a href="${baseUrl}/events">${this.i18n.viewAllEvents ?? "مشاهده همه رویدادها"}</a></p>`;
         }
 
         // Note: original code used <ul> but inserted <div>s. Keeping the divs for correctness.
@@ -275,7 +275,7 @@ class Search {
               </h5>
               <p>
                 ${item.description}
-                <a href="${item.permalink}" class="nu gray">${this.i18n.learnMore ?? "Learn more"}</a>
+                <a href="${item.permalink}" class="nu gray">${this.i18n.learnMore ?? "بیشتر بخوانید"}</a>
               </p>
             </div>
           </div>
