@@ -112,21 +112,21 @@ body {
 
 @media (min-width: 960px) {
 	.site-header__menu {
-		float: right;
+		float: none;
 	}
 
 	.site-header__util {
-		float: left;
+		float: none;
 	}
 
 	.main-navigation {
-		float: right;
+		float: none;
 		margin-right: 0;
 		margin-left: 20px;
 	}
 
 	.main-navigation li {
-		float: right;
+		float: none;
 		padding-left: 0;
 		padding-right: 20px;
 	}
