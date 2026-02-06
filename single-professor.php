@@ -62,7 +62,7 @@
 		<?php $related_programs = get_field( "related_programs" ); ?>
 		<?php if ( $related_programs ) : ?>
             <hr class="section-break">
-            <h2 class="headline headline--medium">Subjects Taught</h2>
+            <h2 class="headline headline--medium"><?php echo esc_html__( 'دروس ارائه‌شده', 'fictional-uni' ); ?></h2>
             <ul class="link-list min-list">
 				<?php foreach ( $related_programs as $program ) : ?>
                     <li>
